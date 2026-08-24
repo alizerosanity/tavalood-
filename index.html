@@ -1,4 +1,5 @@
 <div id="card" class="wrap">
+
 <style>
 .wrap{
 font-family:Tahoma;
@@ -123,10 +124,9 @@ max-width:100%
 یک نامه کوچک برای شما 🌱
 </div>
 
-<div class="envelope" onclick="document.getElementById('card').classList.add('open')">
+<div class="envelope" onclick="openCard()">
 <div class="flap"></div>
 </div>
-
 <div class="paper">
 
 <h2>
@@ -164,15 +164,32 @@ max-width:100%
 </div>
 
 <audio id="music" loop>
-  <source src="assets/birthday-music.mp3" type="audio/mpeg">
+<source src="assets/birthday-music.mp3" type="audio/mpeg">
 </audio>
 
 </div>
 
 <script>
 function openCard(){
-  document.getElementById('card').classList.add('open');
-  document.getElementById('music').play();
+
+document.getElementById('card').classList.add('open');
+
+const music = document.getElementById('music');
+
+music.play().catch(()=>{
+
+const btn = document.createElement('button');
+
+btn.innerText = "پخش موسیقی 🎵";
+
+btn.onclick = ()=> music.play();
+
+btn.style = "margin-top:15px;padding:10px 18px;border-radius:20px;border:none;cursor:pointer";
+
+document.querySelector('.paper').appendChild(btn);
+
+});
+
 }
 </script>
 
